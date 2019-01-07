@@ -1,0 +1,191 @@
+---
+swagger: "2.0"
+info:
+  version: "API ToS"
+  title: "RestApi EncuestaApp"
+host: "jo6tas47ne.execute-api.us-east-1.amazonaws.com"
+basePath: "/prod"
+schemes:
+- "https"
+paths:
+  /encuesta/user:
+    post:
+      operationId: "createUserUsingPOST"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        201:
+          description: "201 response"
+        401:
+          description: "401 response"
+        403:
+          description: "403 response"
+        404:
+          description: "404 response"
+      x-amazon-apigateway-integration:
+        uri: "http://balancer-encuesta-593375171.us-east-1.elb.amazonaws.com/encuesta/user"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "http_proxy"
+    put:
+      operationId: "updateUserUsingPUT"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        201:
+          description: "201 response"
+        401:
+          description: "401 response"
+        403:
+          description: "403 response"
+        404:
+          description: "404 response"
+      x-amazon-apigateway-integration:
+        uri: "http://balancer-encuesta-593375171.us-east-1.elb.amazonaws.com/encuesta/user"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "PUT"
+        type: "http_proxy"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'POST,OPTIONS,PUT'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+        type: "mock"
+  /encuesta/users:
+    get:
+      operationId: "getUsersUsingGET"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ArrayOfUser"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        401:
+          description: "401 response"
+        403:
+          description: "403 response"
+        404:
+          description: "404 response"
+      x-amazon-apigateway-integration:
+        uri: "http://balancer-encuesta-593375171.us-east-1.elb.amazonaws.com/encuesta/users"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "GET"
+        type: "http_proxy"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+        type: "mock"
+definitions:
+  User:
+    type: "object"
+    properties:
+      apellidos:
+        type: "string"
+      edad:
+        type: "integer"
+        format: "int32"
+      eleccion:
+        type: "string"
+      id:
+        type: "integer"
+        format: "int32"
+      nombres:
+        type: "string"
+    title: "User"
+  ArrayOfUser:
+    type: "array"
+    items:
+      $ref: "#/definitions/User"
