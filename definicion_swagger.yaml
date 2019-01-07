@@ -1,0 +1,119 @@
+swagger: '2.0'
+info:
+  description: Servicios Rest para proyecto Final JAWS
+  version: API ToS
+  title: RestApi EncuestaApp
+  termsOfService: Terms of services
+  contact:
+    name: nekrapula@gmail.com
+    url: 'https://www.facebook.com/Nekrapula'
+    email: nekrapula@gmail.com
+  license:
+    name: Licence of API
+    url: 'https://twitter.com/nekrapulaOb'
+host: 'localhost:8090'
+basePath: /
+tags:
+  - name: user-controller
+    description: User Controller
+paths:
+  /encuesta/user:
+    post:
+      tags:
+        - user-controller
+      summary: createUser
+      operationId: createUserUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: user
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    put:
+      tags:
+        - user-controller
+      summary: updateUser
+      operationId: updateUserUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: user
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /encuesta/users:
+    get:
+      tags:
+        - user-controller
+      summary: getUsers
+      operationId: getUsersUsingGET
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+definitions:
+  User:
+    type: object
+    properties:
+      apellidos:
+        type: string
+      edad:
+        type: integer
+        format: int32
+      eleccion:
+        type: string
+      id:
+        type: integer
+        format: int32
+      nombres:
+        type: string
+    title: User
