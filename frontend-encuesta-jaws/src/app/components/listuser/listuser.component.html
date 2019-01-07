@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Bienvenido Administrador</h2>
+  <table class="table table-striped">
+    <thead>
+      <th>Id</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Elección</th>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let user of users">
+          <td>{{user.id}}</td>
+          <td>{{user.nombres}}</td>
+          <td>{{user.apellidos}}</td>
+          <td>{{user.eleccion}}</td>
+          <td><button type="button" class="btn btn-primary" (click)="updateUser(user)">Editar</button></td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>

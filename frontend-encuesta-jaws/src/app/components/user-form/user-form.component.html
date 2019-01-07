@@ -1,0 +1,29 @@
+<div class="container">
+
+    <form (ngSubmit)="processForm()">
+
+        <h2>Bienvenido a la Encuenta</h2>
+
+        <div class="form group">
+          <label for = "nombres">Nombres</label>
+          <input type="text" name="nombres" class="form-control" min="0" max="30" [(ngModel)]="user.nombres">
+        </div>
+        <div class="form group">
+            <label for = "apellidos">Apellidos</label>
+          <input type="text" name="apellidos" class="form-control" maxlength="30" [(ngModel)]="user.apellidos">
+        </div>
+        <div class="form group">
+            <label for = "edad">Edad</label>
+          <input type="number" name="edad" class="form-control" ng-maxlength="20" [(ngModel)]="user.edad">
+        </div>
+        <br>
+        <div class="form group">
+        <mat-radio-group class="example-radio-group" name="eleccion" [(ngModel)]="user.eleccion">
+            <mat-radio-button class="example-radio-button" *ngFor="let language of languages" [value]="language">
+              {{language}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>        
+        <input type="submit" value="Guardar" class="btn btn-success">
+    </form>
+</div>

@@ -1,0 +1,35 @@
+.example-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  
+  .example-selected-value {
+    margin: 15px 0;
+  }
+
+  example-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+
+.centrar
+	{
+		position: absolute;
+		top:50%;
+		left:50%;
+		width:400px;
+		margin-left:-200px;
+		margin-top:-150px;
+	}
