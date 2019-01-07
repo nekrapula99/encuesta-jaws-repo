@@ -1,0 +1,27 @@
+server:
+  port: 8090
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://${BD_URL}:3306/db_encuesta?useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    #url: jdbc:mysql://localhost:3306/db_encuesta?useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: ${BD_USER}
+    password: ${BD_PASSWORD}
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+      
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web: DEBUG
